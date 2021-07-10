@@ -19,8 +19,11 @@ risco-lan-bridge is compatible with these central units and these features:
 |PirCam Support|N***|N***|N***|N|N***|?|
 
 *=> Theoretical compatibility not tested.
+
 ** => Not functional today. 
+
 ***=> Not functional today (planned for a future version).
+
 
 ## Configuration
 First of all, you must define the options necessary to define the Risco Panel Object.
