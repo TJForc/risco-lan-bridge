@@ -73,5 +73,5 @@ With the default options, the connection will be automatically made and you will
 
 For more information regarding operation or interactions with the hardware, please refer to the wiki.
 
-### Licence
+### License
 risco-lan-bridge is licensed under the MIT license, so you can dispose of it as you see fit under the terms of that license.
