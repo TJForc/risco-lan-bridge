@@ -46,105 +46,105 @@ AgilityPanel.on('SystemInitComplete', () => {
     // Listen specific event for Partition Id 1
     let Monitored_Part = AgilityPanel.Partitions.ById(1);
     Monitored_Part.on('Alarm', (Id) => {
-        console.log(`Partition ${Id} Alarm`)
+        console.log(`Partition ${Id} Alarm`);
     });
     Monitored_Part.on('StandBy', (Id) => {
-        console.log(`Partition ${Id} StandBy`)
+        console.log(`Partition ${Id} StandBy`);
     });
     Monitored_Part.on('Duress', (Id) => {
-        console.log(`Partition ${Id} Duress`)
+        console.log(`Partition ${Id} Duress`);
     });
     Monitored_Part.on('Free', (Id) => {
-        console.log(`Partition ${Id} Free`)
+        console.log(`Partition ${Id} Free`);
     });
     Monitored_Part.on('FalseCode', (Id) => {
-        console.log(`Partition ${Id} FalseCode`)
+        console.log(`Partition ${Id} FalseCode`);
     });
     Monitored_Part.on('CodeOk', (Id) => {
-        console.log(`Partition ${Id} CodeOk`)
+        console.log(`Partition ${Id} CodeOk`);
     });
     Monitored_Part.on('Fire', (Id) => {
-        console.log(`Partition ${Id} Fire`)
+        console.log(`Partition ${Id} Fire`);
     });
     Monitored_Part.on('NoFire', (Id) => {
-        console.log(`Partition ${Id} NoFire`)
+        console.log(`Partition ${Id} NoFire`);
     });
     Monitored_Part.on('Panic', (Id) => {
-        console.log(`Partition ${Id} Panic`)
+        console.log(`Partition ${Id} Panic`);
     });
     Monitored_Part.on('NoPanic', (Id) => {
-        console.log(`Partition ${Id} NoPanic`)
+        console.log(`Partition ${Id} NoPanic`);
     });
     Monitored_Part.on('Medic', (Id) => {
-        console.log(`Partition ${Id} Medic`)
+        console.log(`Partition ${Id} Medic`);
     });
     Monitored_Part.on('NoMedic', (Id) => {
-        console.log(`Partition ${Id} NoMedic`)
+        console.log(`Partition ${Id} NoMedic`);
     });
     Monitored_Part.on('Armed', (Id) => {
-        console.log(`Partition ${Id} Armed`)
+        console.log(`Partition ${Id} Armed`);
     });
     Monitored_Part.on('Disarmed', (Id) => {
-        console.log(`Partition ${Id} Disarmed`)
+        console.log(`Partition ${Id} Disarmed`);
     });
     Monitored_Part.on('HomeStay', (Id) => {
-        console.log(`Partition ${Id} HomeStay`)
+        console.log(`Partition ${Id} HomeStay`);
     });
     Monitored_Part.on('HomeDisarmed', (Id) => {
-        console.log(`Partition ${Id} HomeDisarmed`)
+        console.log(`Partition ${Id} HomeDisarmed`);
     });
     Monitored_Part.on('Ready', (Id) => {
-        console.log(`Partition ${Id} Ready`)
+        console.log(`Partition ${Id} Ready`);
     });
     Monitored_Part.on('NotReady', (Id) => {
-        console.log(`Partition ${Id} NotReady`)
+        console.log(`Partition ${Id} NotReady`);
     });
     Monitored_Part.on('ZoneOpen', (Id) => {
-        console.log(`Partition ${Id} ZoneOpen`)
+        console.log(`Partition ${Id} ZoneOpen`);
     });
     Monitored_Part.on('ZoneClosed', (Id) => {
-        console.log(`Partition ${Id} ZoneClosed`)
+        console.log(`Partition ${Id} ZoneClosed`);
     });
     Monitored_Part.on('MemoryEvent', (Id) => {
-        console.log(`Partition ${Id} MemoryEvent`)
+        console.log(`Partition ${Id} MemoryEvent`);
     });
     Monitored_Part.on('MemoryAck', (Id) => {
-        console.log(`Partition ${Id} MemoryAck`)
+        console.log(`Partition ${Id} MemoryAck`);
     });
     Monitored_Part.on('ActivityAlert', (Id) => {
-        console.log(`Partition ${Id} ActivityAlert`)
+        console.log(`Partition ${Id} ActivityAlert`);
     });
     Monitored_Part.on('ActivityOk', (Id) => {
-        console.log(`Partition ${Id} ActivityOk`)
+        console.log(`Partition ${Id} ActivityOk`);
     });
     Monitored_Part.on('GrpAArmed', (Id) => {
-        console.log(`Partition ${Id} GrpAArmed`)
+        console.log(`Partition ${Id} GrpAArmed`);
     });
     Monitored_Part.on('GrpADisarmed', (Id) => {
-        console.log(`Partition ${Id} GrpADisarmed`)
+        console.log(`Partition ${Id} GrpADisarmed`);
     });
     Monitored_Part.on('GrpBArmed', (Id) => {
-        console.log(`Partition ${Id} GrpBArmed`)
+        console.log(`Partition ${Id} GrpBArmed`);
     });
     Monitored_Part.on('GrpBDisarmed', (Id) => {
-        console.log(`Partition ${Id} GrpBDisarmed`)
+        console.log(`Partition ${Id} GrpBDisarmed`);
     });
     Monitored_Part.on('GrpCArmed', (Id) => {
-        console.log(`Partition ${Id} GrpCArmed`)
+        console.log(`Partition ${Id} GrpCArmed`);
     });
     Monitored_Part.on('GrpCDisarmed', (Id) => {
-        console.log(`Partition ${Id} GrpCDisarmed`)
+        console.log(`Partition ${Id} GrpCDisarmed`);
     });
     Monitored_Part.on('GrpDArmed', (Id) => {
-        console.log(`Partition ${Id} GrpDArmed`)
+        console.log(`Partition ${Id} GrpDArmed`);
     });
     Monitored_Part.on('GrpDDisarmed', (Id) => {
-        console.log(`Partition ${Id} GrpDDisarmed`)
+        console.log(`Partition ${Id} GrpDDisarmed`);
     });
     Monitored_Part.on('Trouble', (Id) => {
-        console.log(`Partition ${Id} Trouble`)
+        console.log(`Partition ${Id} Trouble`);
     });
     Monitored_Part.on('Ok', (Id) => {
-        console.log(`Partition ${Id} Ok`)
+        console.log(`Partition ${Id} Ok`);
     });
 });

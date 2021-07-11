@@ -78,8 +78,14 @@ AgilityPanel.on('SystemInitComplete', () => {
     Monitored_Zone.on('Lost', (Id) => {
         console.log(`Zone ${Id} Lost`)
     });
+    Monitored_Zone.on('Located', (Id) => {
+        console.log(`Zone ${Id} Located`)
+    });
     Monitored_Zone.on('LowBattery', (Id) => {
         console.log(`Zone ${Id} LowBattery`)
+    });
+    Monitored_Zone.on('BatteryOk', (Id) => {
+        console.log(`Zone ${Id} BatteryOk`)
     });
     Monitored_Zone.on('Bypassed', (Id) => {
         console.log(`Zone ${Id} Bypassed`)
