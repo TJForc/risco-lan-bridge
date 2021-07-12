@@ -25,6 +25,8 @@
  *  SOFTWARE.
  */
 
+const RiscoTCPPanel = require('risco-lan-bridge');
+
 let Options = {
     Panel_IP: '192.168.0.100',
     Panel_Port: 1000,

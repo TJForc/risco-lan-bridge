@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const { Agility } = require("../lib/RiscoTCPPanel");
+const RiscoTCPPanel = require('risco-lan-bridge');
 
 let Options = {
     Panel_IP: '192.168.0.100',
@@ -33,6 +33,8 @@ let Options = {
     Panel_Password: 5678,
     Panel_Id: '0001',
 };
+
+let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
 
 // Request to Bypass/UnBypass Zone Id 1
 // You can then check the status of the Zone in 2 ways:
@@ -46,11 +48,15 @@ let GetZoneBypassState = (() => {
     }
 });
 
-GetZoneBypassState();
-if (await AgilityPanel.ToggleBypassZone(1)) {
-    console.log('Zone Bypass Successfully Toggled');
+AgilityPanel.on('SystemInitComplete', () => {
     GetZoneBypassState();
-} else {
-    console.log('Error on Zone Bypass Toggle');
-    GetZoneBypassStatee();
-}
+    if (await AgilityPanel.ToggleBypassZone(1)) {
+        console.log('Zone Bypass Successfully Toggled');
+        GetZoneBypassState();
+    } else {
+        console.log('Error on Zone Bypass Toggle');
+        GetZoneBypassStatee();
+    }
+});
+await new Promise(r => setTimeout(r, 1000));
+
