@@ -538,6 +538,7 @@ Monitored_Zone.on('ZoneUsed', (Id) => {
 
 ### Commands
 
+#### Method 1 
 The zone is an Object with which you can interact to define it in the Bypassed state or not.
 
 However, it is not possible to define the desired state, we can just toggle its state; it will therefore be necessary to check the state of the zone before switching its state if you want to put it in one of the two possible states.
@@ -552,6 +553,21 @@ if ((this.RPanel.Zones.ById(1)).Bypass) {
 	} else {
 		console.log('Error on Zone Bypass Toggle');
 	}
+}
+```
+
+
+#### Method 2
+
+You can also perform a direct command from the Object Zone:
+```
+// We want to Bypass zone 1:
+let TestZone = this.RPanel.Zones.ById(1);
+
+if (await TestZone.ToggleBypass()) {
+    console.log('Zone Bypass Successfully Toggled');
+} else {
+	console.log('Error on Zone Bypass Toggle');
 }
 ```
 
@@ -622,6 +638,8 @@ Monitored_Output.on('Deactived', (Id) => {
 
 ### Commands
 
+#### Method 1
+
 The Output is an Object with which you can interact to Toggle state.
 
 However, as with zones, it is not possible to set the desired state, we can just toggle its state; it will therefore be necessary to check the state of the output before switching its state if you want to put it in one of the two possible states (is not required for pulsed outputs since these outputs do not really have a fixed state ).
@@ -633,6 +651,20 @@ if (await  this.RPanel.ToggleOutput(1)) {
 	console.log('Output Successfully Toggled');
 } else {
 	console.log('Error on Output Toggle');
+}
+```
+
+#### Method 2
+
+You can also perform a direct command from the Object Output:
+```
+// We want to Test with Output 1:
+let TestOutput = this.RPanel.Outputs.ById(1);
+
+if (await TestOutput.ToggleOutput()) {
+    console.log('Output Successfully Toggled');
+} else {
+	console.log('Error onToggle Output');
 }
 ```
 
@@ -875,6 +907,7 @@ Monitored_Part.on('Ok', (Id) => {
 
 ### Commands
 
+#### Method 1
 The Partition is an Object with which you can interact to Arm/Disarm it.
 Arming can be total (away) or partial (stay).
 
@@ -896,5 +929,34 @@ if (await  this.RPanel.DisarmPart(1)) {
 	console.log('Partition Successfully Armed/Disarmed');
 } else {
 	console.log('Error on PArtition Arming/Disaming');
+}
+```
+
+#### Method 2
+
+You can also perform a direct command from the Object Partition:
+```
+// We want to Test with Partition 1:
+let TestPart = this.RPanel.Partitions.ById(1);
+
+// Full Arm
+if (await TestPart.Arm()) {
+    console.log('Partition Successfully Armed');
+} else {
+	console.log('Error on Partition Arming');
+}
+
+// Stay Arm
+if (await TestPart.Stay()) {
+    console.log('Partition Successfully Armed');
+} else {
+	console.log('Error on Partition Arming');
+}
+
+// Disarm
+if (await TestPart.Disarm()) {
+    console.log('Partition Successfully Armed');
+} else {
+	console.log('Error on Partition Arming');
 }
 ```
