@@ -1,8 +1,6 @@
-.idea/*
 .vscode/*
 *.code-workspace
-.gitattributes
 
 # Local History for Visual Studio Code
 .history/
-
+~/*
