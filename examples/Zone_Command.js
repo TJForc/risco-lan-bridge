@@ -48,15 +48,13 @@ let GetZoneBypassState = (() => {
     }
 });
 
-AgilityPanel.on('SystemInitComplete', () => {
+AgilityPanel.on('SystemInitComplete', async () => {
     GetZoneBypassState();
     if (await AgilityPanel.ToggleBypassZone(1)) {
         console.log('Zone Bypass Successfully Toggled');
         GetZoneBypassState();
     } else {
         console.log('Error on Zone Bypass Toggle');
-        GetZoneBypassStatee();
+        GetZoneBypassState();
     }
 });
-await new Promise(r => setTimeout(r, 1000));
-
