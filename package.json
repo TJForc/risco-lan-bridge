@@ -1,7 +1,7 @@
 {
   "name": "risco-lan-bridge",
   "displayName": "Risco Lan Bridge",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Risco Lan Bridge allows direct communication with most Risco control panels. It allows you to recover in real time the state of your system and to perform the arming/disarming functions or the inhibition of the detection zones.",
   "main": "index.js",
   "directories": {
