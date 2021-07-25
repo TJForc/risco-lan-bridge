@@ -9,6 +9,9 @@
     "example": "examples",
     "lib": "lib"
   },
+  "engines": {
+    "node": ">=10.24.1"
+  },
   "publishConfig": {
     "cache": "~/.npm",
     "registry": "https://registry.npmjs.org/"
