@@ -1,3 +1,10 @@
+[![license badge](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/TJForc/risco-lan-bridge/blob/main/LICENSE)
+[![Package Version](https://shields.io/npm/v/risco-lan-bridge/latest)](https://www.npmjs.com/package/risco-lan-bridge)
+[![Node Version](https://shields.io/node/v/risco-lan-bridge)](https://www.npmjs.com/package/risco-lan-bridge)
+[![Maintenance badge](https://shields.io/badge/maintenance-yes-green.svg)](https://github.com/TJForc/risco-lan-bridge/)
+
+
+
 # risco-lan-bridge
 risco-lan-bridge is not intended to be used as is.
 This program is intended to be used as a "bridge" between your application and a Risco alarm Panel (can also work with Electronic Line products but this has not been tested).
@@ -10,19 +17,23 @@ risco-lan-bridge is compatible with these central units and these features:
 |Partitions|Y*|Y*|Y*|Y|Y*|?|
 |Outputs|Y*|Y*|Y*|Y|Y*|?|
 |Groups|N**|N**|N**|N**|N**|?|
-|Arming|Y|Y|Y|Y|Y|?|
-|Stay Arming|Y|Y|Y|Y|Y|?|
+|Arming|Y*|Y*|Y*|Y|Y*|?|
+|Stay Arming|Y*|Y*|Y*|Y|Y*|?|
 |Temporised Arming|N**|N**|N**|N**|N**|?|
-|Disarming|Y|Y|Y|Y|Y|?|
-|Bypass/UnBypass Zones|Y|Y|Y|Y|Y|?|
-|Command Outputs|Y|Y|Y|Y|Y|?|
+|Disarming|Y*|Y*|Y*|Y|Y*|?|
+|Bypass/UnBypass Zones|Y*|Y*|Y*|Y|Y*|?|
+|Command Outputs|Y*|Y*|Y*|Y|Y*|?|
 |PirCam Support|N***|N***|N***|N|N***|?|
 
-*=> Theoretical compatibility not tested.
+* => Theoretical compatibility not tested.
 
 ** => Not functional today. 
 
-***=> Not functional today (planned for a future version).
+*** => Not functional today (planned for a future version).
+
+***WARNING : For control panels equipped with a Mono-Socket type IP module (IPC / RW132IP), direct connection may not work if RiscoCloud is enabled in the configuration.
+To use this module, you must therefore deactivate RiscoCloud and then restart your control panel (or the IP module by deactivating it and then reactivating it in the configuration from the keyboard).
+This action will prevent the control panel from connecting to RiscoCloud and you will no longer be able to use it remotely from the iRisco application.***
 
 
 ## Configuration
