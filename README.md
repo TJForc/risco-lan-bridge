@@ -25,11 +25,11 @@ risco-lan-bridge is compatible with these central units and these features:
 |Command Outputs|Y*|Y*|Y*|Y|Y*|?|
 |PirCam Support|N***|N***|N***|N|N***|?|
 
-* => Theoretical compatibility not tested.
+*=> Theoretical compatibility not tested.
 
-** => Not functional today. 
+**=> Not functional today. 
 
-*** => Not functional today (planned for a future version).
+***=> Not functional today (planned for a future version).
 
 ***WARNING : For control panels equipped with a Mono-Socket type IP module (IPC / RW132IP), direct connection may not work if RiscoCloud is enabled in the configuration.
 To use this module, you must therefore deactivate RiscoCloud and then restart your control panel (or the IP module by deactivating it and then reactivating it in the configuration from the keyboard).
