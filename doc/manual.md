@@ -916,7 +916,7 @@ This is done using the 'ArmPart' or 'DisarmPart' functions of the Risco Panel ob
 ```
 // For arming, you must provide both the Partition ID and the desired arming type
 // 0 => Full Arm
-// 1 => PArtial Arm (Stay at Home)
+// 1 => Partial Arm (Stay at Home)
 if (await  this.RPanel.ArmPart(1, 0)) {
 	console.log('Partition Successfully Armed/Disarmed');
 } else {
