@@ -940,14 +940,14 @@ You can also perform a direct command from the Object Partition:
 let TestPart = this.RPanel.Partitions.ById(1);
 
 // Full Arm
-if (await TestPart.Arm()) {
+if (await TestPart.AwayArm()) {
     console.log('Partition Successfully Armed');
 } else {
 	console.log('Error on Partition Arming');
 }
 
 // Stay Arm
-if (await TestPart.Stay()) {
+if (await TestPart.HomeStayArm()) {
     console.log('Partition Successfully Armed');
 } else {
 	console.log('Error on Partition Arming');
