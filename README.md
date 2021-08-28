@@ -56,6 +56,9 @@ ReconnectDelay:  10000,
 AutoConnect:  true,
 // Defines if the plugin should deactivate RiscoCloud on the control panel (Optional)
 Disable_RiscoCloud:  true,
+Enable_RiscoCloud:  true,
+//Note :If the 'Disable_RiscoCloud' and 'Enable_RiscoCloud' options are both true, no changes will be made.
+// Defines if the plugin should discover the access codes and the Id panel automatically (Optional)
 // Defines if the plugin should discover the access codes and the Id panel automatically (Optional)
 DiscoverCode:  true,
 // Defines an overload function for logging (Optional)
