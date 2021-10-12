@@ -61,13 +61,25 @@ Enable_RiscoCloud:  true,
 //Note :If the 'Disable_RiscoCloud' and 'Enable_RiscoCloud' options are both true, no changes will be made.
 // Defines if the plugin should discover the access codes and the Id panel automatically (Optional)
 DiscoverCode:  true,
+// Defines the operating mode of the TCP Socket ('direct' or 'proxy') (Optional)
+// see wiki for more information
+SocketMode: 'direct',
+// In Proxy Mode, define the listening TCP port for the Panel to connect (Optional)
+ListeningPort: 33000,
+// In Proxy Mode, define the TCP port to connect to RiscoCloud (Optional)
+CloudPort: 33000,
+// In Proxy Mode, define the URL to connect to RiscoCloud (Optional)
+CloudUrl: 'www.riscocloud.com',
 // Defines an overload function for logging (Optional)
 logger:  logger_function,
 // Defines a specific channel for logs (Optional - default channel is 'console')
 log:  log_channel
 };
 ````
-All these options are not mandatory, the only really essential option is the 'Panel_IP' option.
+All these options are not mandatory, the only really essential option is the 'Panel_IP' option (unless the TCP Port, Panel Id and remote password are not the default ones, in which case they must also be specified).
+
+For Socket mode, see the [wiki](https://github.com/TJForc/risco-lan-bridge/wiki/Socket-mode) for more information
+
 You can then create your RiscoPanel Object:
 ```
 // Create Agility Object

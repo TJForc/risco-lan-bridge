@@ -49,6 +49,14 @@ Enable_RiscoCloud:  true,
 //Note :If the 'Disable_RiscoCloud' and 'Enable_RiscoCloud' options are both true, no changes will be made.
 // Defines if the plugin should discover the access codes and the Id panel automatically (Optional)
 DiscoverCode:  true,
+// Defines the operating mode of the TCP Socket ('direct' or 'proxy') (Optional)
+SocketMode: 'direct',
+// In Proxy Mode, define the listening TCP port for the Panel to connect (Optional)
+ListeningPort: 33000,
+// In Proxy Mode, define the TCP port to connect to RiscoCloud (Optional)
+CloudPort: 33000,
+// In Proxy Mode, define the URL to connect to RiscoCloud (Optional)
+CloudUrl: 'www.riscocloud.com',
 // Defines an overload function for logging (Optional)
 logger:  logger_function,
 // Defines a specific channel for logs (Optional - default channel is 'console')
@@ -58,8 +66,84 @@ log:  log_channel
 // SupportPirCam: false
 };
 ```
-All of the options discussed above are optional and the values shown are the default options.
+All of the options discussed above are optional and the values shown are the default options (unless the TCP Port, Panel Id and remote password are not the default ones, in which case they must also be specified).
 
+## 'Direct' or 'proxy' connection mode
+
+If your control panel is equipped with a multi-socket IP module, you are free to choose the connection mode that suits you best, but the default 'direct' mode should work perfectly.
+
+But in the event that your control panel is equipped with a mon-socket IP module, you can then either deactivate the Cloud functions of your control panel and use the 'direct' mode, or use the 'proxy' connection mode.
+
+### Direct Mode
+
+In this mode, 'risco-lan-bridge' will establish a connection to your control panel.
+'risco-lan-bridge' then acts as a TCP client and your control panel as a server.
+The diagrams below will be more explicit:
+
+Direct mode with a Multi-socket IP module (connected or not to RiscoCloud):
+```
+ .----------.                       .-----------.                        .----------------.
+ |RiscoCloud|<--------------------->|Risco Panel|<---------------------->|risco-lan-bridge|
+ '----------'    TCP Cloud Data     '-----------'     TCP Direct Data    '----------------'
+```
+
+Direct mode with a Mono-socket IP module (not connected to RiscoCloud):
+```
+ .-----------.                        .----------------.
+ |Risco Panel|<---------------------->|risco-lan-bridge|
+ '-----------'     TCP Direct Data    '----------------'
+```
+To choose this operating mode, the 'SocketMode' option must either be omitted or set to 'direct' :
+```
+SocketMode: 'direct',
+```
+
+### Proxy Mode
+
+In this connection mode, 'risco-lan-bridge' will be inserted between the Panel and the RiscoCloud.
+'risco-lan-bridge' will then act as a server on the Panel side and as a client on the RiscoCloud side.
+'risco-lan-bridge' will then take care of transmitting the data identified as Cloud data to each of the other two parts and can then communicate directly with the Panel via the socket established by the Panel.
+At the same time, the remote connections (via the "Configuration Software") will be listened to in order to replace themselves transparently in order to make this operating mode undetectable.
+In this specific case, only the connection / disconnection frames of the remote client will be substituted so that the remote connection can be established and that the remote disconnection does not come to close the channel established between 'risco-lan-bridge' and the Panel.
+
+**IMPORTANT:
+For this connection mode to work, it is essential to make the control panel believe that it is connecting to RiscoCloud.
+This can be done by modifying the control panel's RiscoCloud connection parameters, indicating the IP address and listening port of the device hosting 'risco-lan-bridge', by redirecting the TCP flow from the control panel to the RiscoCloud (advanced configuration at your router for example) or any other means allowing this operation to be carried out.**
+
+The proxy mode connection diagram looks like this:
+```
+.----------.           .----------.                       .----------------.                       .-----------.
+|  Remote  |           |          |                       |                |                       |           |
+|  Client  |<--------->|RiscoCloud|<-------------------------------------------------------------->|Risco Panel|
+'----------'   Remote  |          |  |   TCP Cloud Data   |                |   TCP Cloud Data   |  |           |
+                Data   '----------'  |                    |                |                    |  '-----------'
+                                     |                    |                |                    |             
+                                     |                    |                |                    |             
+                                     |                    |risco-lan-bridge|                    |  
+                                     |                    |                |                    |             
+                                     |                    |                |                    |             
+                                     ---------------------|----------------|---------------------             
+                                        Remote Data or    |      Data      |   TCP Direct Data                
+                                       Panel Response's   |   Processing   |    + Remote Data                 
+                                       to Remote Client   '----------------'   after treatement    
+```
+To choose this operating mode, the 'SocketMode' option must either be set to 'proxy' :
+```
+// Defines the operating mode of the TCP Socket ('direct' or 'proxy') (Optional)
+SocketMode: 'proxy',
+```
+
+By default, 'risco-lan-bridge' will listen for connections from Panel on TCP Port 33000 and connect to RiscoCloud on TCP port 33000 and URL 'www.riscocloud.com'.
+
+This behavior can be changed by changing the values of the following options:
+```
+// In Proxy Mode, define the listening TCP port for the Panel to connect (Optional)
+ListeningPort: 33000,
+// In Proxy Mode, define the TCP port to connect to RiscoCloud (Optional)
+CloudPort: 33000,
+// In Proxy Mode, define the URL to connect to RiscoCloud (Optional)
+CloudUrl: 'www.riscocloud.com',
+```
 ## Instantiation and Connection
 
 Once the options have been defined, you can invoke an object corresponding to the type of panel installed.
@@ -132,6 +216,9 @@ this.RPanel.MBSystem;
 ```
 // String : Indicates the name of the system as defined in its programming.
 this.MBSystem.Label;
+// Boolean : Indicates if the Panel configuration has been modified (entered programming mode) 
+// since the connection was established
+this.NeedUpdateConfig;
 // Boolean : Indicates a battery fault state on the system (panel or remote power supply)
 this.MBSystem.LowBatteryTrouble;
 // Boolean : Indicates a mains fault state on the system (panel or remote power supply)
@@ -372,6 +459,9 @@ The Zone Object has several public properties accessible via its instance:
 this.Zone.Id;
 // String : Indicates the name of the Detector as defined in its programming.
 this.Zone.Label;
+// Boolean : Indicates if the Panel configuration has been modified (entered programming mode) 
+// since the connection was established
+this.NeedUpdateConfig;
 // Integer : Indicates the type of the zone by its numeric value.
 this.Zone.TypeStr;
 // String : Indicates the type of the zone by its literal value.
@@ -609,6 +699,9 @@ let Output = this.RPanel.Ouputs[x - 1]
 this.Id;
 // String : Indicates the name of the Output as defined in its programming.
 this.Label;
+// Boolean : Indicates if the Panel configuration has been modified (entered programming mode) 
+// since the connection was established
+this.NeedUpdateConfig;
 // String : Indicates the type of the output (Latch or pulse)
 this.Type;
 // Boolean : Indicates whether the output is in the active state or not
@@ -706,6 +799,9 @@ let Partition = this.RPanel.Partitions[x - 1]
 this.Partition.Id;
 // String : Indicates the name of the Partition as defined in its programming.
 this.Partition.Label;
+// Boolean : Indicates if the Panel configuration has been modified (entered programming mode) 
+// since the connection was established
+this.NeedUpdateConfig;
 // Boolean : Indicates the alarm state of the partition.
 this.Partition.Alarm = false;
 // Boolean : Indicates the duress state of the partition 
