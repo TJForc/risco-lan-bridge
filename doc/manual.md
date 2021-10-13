@@ -144,6 +144,7 @@ CloudPort: 33000,
 // In Proxy Mode, define the URL to connect to RiscoCloud (Optional)
 CloudUrl: 'www.riscocloud.com',
 ```
+
 ## Instantiation and Connection
 
 Once the options have been defined, you can invoke an object corresponding to the type of panel installed.
