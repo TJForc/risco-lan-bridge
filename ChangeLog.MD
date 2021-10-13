@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 * Add Proxy Mode for connection to Panel
 * Fix error on 'MaxZones/Maxoutputs is not function'
 * Improved Auto Reconnection procedure for direct mode.
+* Add Changelogs File
 
 ## 0.9.8 (2021-28-08)
 * Code improvements
