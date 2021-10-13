@@ -78,7 +78,7 @@ log:  log_channel
 ````
 All these options are not mandatory, the only really essential option is the 'Panel_IP' option (unless the TCP Port, Panel Id and remote password are not the default ones, in which case they must also be specified).
 
-For Socket mode, see the [wiki](https://github.com/TJForc/risco-lan-bridge/wiki/Socket-mode) for more information
+For Socket mode, see the [wiki](https://github.com/TJForc/risco-lan-bridge/wiki/Socket-Mode) for more information
 
 You can then create your RiscoPanel Object:
 ```
