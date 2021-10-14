@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.10.2 (2021-13-10)
+* Fix Mispelled module exports in index.js
+
 ## 0.10.1 (2021-13-10)
 * Fix error with Prog Mode
 * Add missing trim in Partition Label

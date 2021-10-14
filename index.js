@@ -25,4 +25,4 @@
  *  SOFTWARE.
  */
 
-module.exports = require('./lib/RiscoTCPPanel');
+module.exports = require('./lib/RiscoPanel');
