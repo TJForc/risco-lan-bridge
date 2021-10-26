@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.10.3 (2021-13-10)
+* Modification of the Timeout text in the logs when sending an order (#4)
+* Modification of the logging level during a timeout (this is now DEBUG information, 
+  the timeout being caused by the lack of response from the control unit and not by an 
+  execution error of this code).
+* During a Timeout, the request is now re-sent when it was not the case before.
+
 ## 0.10.2 (2021-13-10)
 * Fix Mispelled module exports in index.js
 
