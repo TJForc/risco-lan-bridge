@@ -5,3 +5,5 @@
 .history/
 ~/*
 .test/*
+/.idea/
+node_modules/
