@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 let Options = {
     Panel_IP: '192.168.0.100',
@@ -34,23 +34,23 @@ let Options = {
     Panel_Id: '0001',
 };
 
-let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
+let Panel = new RiscoPanel(Options);
 
 // Request to Bypass/UnBypass Zone Id 1
 // You can then check the status of the Zone in 2 ways:
 // - listen to 'Bypassed' and 'UnBypassed' events (see Zone_Events.js file)
 // - Retrieve the state of the 'Bypass' property of the zone
 let GetZoneBypassState = (() => {
-    if ((AgilityPanel.Zones.ById(1)).Bypass) {
+    if ((Panel.Zones.ById(1)).Bypass) {
         console.log('Zone is Bypassed');
     } else {
         console.log('Zone is UnBypassed');
     }
 });
 
-AgilityPanel.on('SystemInitComplete', async () => {
+Panel.on('SystemInitComplete', async () => {
     GetZoneBypassState();
-    if (await AgilityPanel.ToggleBypassZone(1)) {
+    if (await Panel.ToggleBypassZone(1)) {
         console.log('Zone Bypass Successfully Toggled');
         GetZoneBypassState();
     } else {

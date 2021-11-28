@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 let Options = {
     Panel_IP: '192.168.0.100',
@@ -34,19 +34,19 @@ let Options = {
     Panel_Id: '0001',
 };
 
-let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
+let Panel = new RiscoPanel(Options);
 
 // Wait for the plugin to be connected and initialized
-AgilityPanel.on('SystemInitComplete', () => {
+Panel.on('SystemInitComplete', () => {
     // Listening to all events from all zones.
     // In this case, it is up to you to deal with the 
     // type of events received and the action to be taken.
-    AgilityPanel.Zones.on('ZStatusChanged', (Id, EventStr) => {
+    Panel.Zones.on('ZStatusChanged', (Id, EventStr) => {
         console.log(`Zones Status Changed :\n Zone Id ${Id}\n New Status: ${EventStr}`);
     });
 
     // Listen specific event for zone Id 1
-    let Monitored_Zone = AgilityPanel.Zones.ById(1);
+    let Monitored_Zone = Panel.Zones.ById(1);
     Monitored_Zone.on('Open', (Id) => {
         console.log(`Zone ${Id} Open`)
     });

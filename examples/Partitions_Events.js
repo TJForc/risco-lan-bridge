@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 let Options = {
     Panel_IP: '192.168.0.100',
@@ -34,19 +34,19 @@ let Options = {
     Panel_Id: '0001',
 };
 
-let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
+let Panel = new RiscoPanel(Options);
 
 // Wait for the plugin to be connected and initialized
-AgilityPanel.on('SystemInitComplete', () => {
+Panel.on('SystemInitComplete', () => {
     // Listening to all events from all Partitions.
     // In this case, it is up to you to deal with the 
     // type of events received and the action to be taken.
-    AgilityPanel.Partitions.on('PStatusChanged', (Id, EventStr) => {
+    Panel.Partitions.on('PStatusChanged', (Id, EventStr) => {
         console.log(`Partitions Status Changed :\n Partition Id ${Id}\n New Status: ${EventStr}`);
     });
 
     // Listen specific event for Partition Id 1
-    let Monitored_Part = AgilityPanel.Partitions.ById(1);
+    let Monitored_Part = Panel.Partitions.ById(1);
     Monitored_Part.on('Alarm', (Id) => {
         console.log(`Partition ${Id} Alarm`);
     });

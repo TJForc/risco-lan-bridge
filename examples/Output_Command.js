@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 let Options = {
     Panel_IP: '192.168.0.100',
@@ -34,7 +34,7 @@ let Options = {
     Panel_Id: '0001',
 };
 
-let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
+let Panel = new RiscoPanel(Options);
 
 // Request to switch output Id 1
 // For Pulse type outputs, no status feedback will be sent by the Panel.
@@ -43,14 +43,14 @@ let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
 // - listen to 'Activated' and 'Deactivated' events (see Output_Events.js file)
 // - Retrieve the state of the 'Active' property of the output
 let GetOutputState = (() => {
-    if ((AgilityPanel.Outputs.ById(1)).Active) {
+    if ((Panel.Outputs.ById(1)).Active) {
         console.log('Output is Active State');
     } else {
         console.log('Output is Inactive State');
     }
 });
 GetOutputState();
-if (await AgilityPanel.ToggleOutput(1)) {
+if (await Panel.ToggleOutput(1)) {
     console.log('Output Successfully Toggled');
     GetOutputState();
 } else {
