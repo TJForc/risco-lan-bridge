@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 let Options = {
     Panel_IP: '192.168.0.100',
@@ -34,14 +34,14 @@ let Options = {
     Panel_Id: '0001',
 };
 
-let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
+let Panel = new RiscoPanel(Options);
 
 // Request to Arm Partition Id 1
 // You can then check the status of the partition in 2 ways:
 // - listen to 'Armed' and 'Disarmed' events (see Output_Events.js file)
 // - Retrieve the state of the 'Arm' property of the output
 let GetPartitionState = (() => {
-    if ((AgilityPanel.Partitions.ById(1)).Arm) {
+    if ((Panel.Partitions.ById(1)).Arm) {
         console.log('Partition is Armed State');
     } else {
         console.log('Partition is Disarmed State');
@@ -52,7 +52,7 @@ GetPartitionState();
 // For arming, you must provide both the Partition ID and the desired arming type
 // 0 => Full Arm
 // 1 => PArtial Arm (Stay at Home)
-if (await AgilityPanel.ArmPart(1, 0)) {
+if (await Panel.ArmPart(1, 0)) {
     console.log('Partition Successfully Armed/Disarmed');
     GetPartitionState();
 } else {
@@ -62,7 +62,7 @@ if (await AgilityPanel.ArmPart(1, 0)) {
 
 // Request to Disarm Partition Id 1
 // For disarming, only the partition ID is required 
-if (await AgilityPanel.DisarmPart(1)) {
+if (await Panel.DisarmPart(1)) {
     console.log('Partition Successfully Armed/Disarmed');
     GetPartitionState();
 } else {

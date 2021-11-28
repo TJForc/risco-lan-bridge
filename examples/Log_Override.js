@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 /*
  * The function below corresponds to the function used in this plugin
@@ -82,4 +82,4 @@ let Options = {
 };
 
 // you can now initialize a Risco Panel Object
-let AgilityPanel  = new RiscoTCPPanel.Agility(Options);
+let Panel = new RiscoPanel(Options);

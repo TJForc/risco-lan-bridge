@@ -25,7 +25,7 @@
  *  SOFTWARE.
  */
 
-const RiscoTCPPanel = require('risco-lan-bridge');
+const RiscoPanel = require('risco-lan-bridge').RiscoPanel;
 
 // All the values shown below are the default values (except for the logger and log options) 
 let Options = {
@@ -59,21 +59,6 @@ let Options = {
     // SupportPirCam: false
 };
 
-// Once the options have been defined, you can invoke an object corresponding to the type of panel installed.
-// Create Agility Object
-let RPanel  = new RiscoTCPPanel.Agility(Options);
-
-// Or create WiComm Object
-let RPanel  = new RiscoTCPPanel.WiComm(Options);
-
-// Or create WiCommPro Object
-let RPanel  = new RiscoTCPPanel.WiCommPro(Options);
-
-// Or create LightSYS Object
-let RPanel  = new RiscoTCPPanel.LightSys(Options);
-
-// Or create ProsysPlus Object
-let RPanel  = new RiscoTCPPanel.ProsysPlus(Options);
-
-// Or create GTPlus Object
-let RPanel  = new RiscoTCPPanel.GTPlus(Options);
+// Once the options have been defined, you can instanciate the RiscoPanel.
+// Create panel
+let Panel = new RiscoPanel(Options);
