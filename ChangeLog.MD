@@ -2,8 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.10.5 (2021-28-11)
+* Merge Pull Requests from Monofin (#12 - Add a 10 second delay between socket connect and RMT command.)
+* Added Debug entry for this wait time. 
+
 ## 0.10.4 (2021-01-11)
-* Merge Pull Requests from vanackej (#6 - Various bug fixes and code improvements by vanackej )
+* Merge Pull Requests from vanackej (#6 - Various bug fixes and code improvements by vanackej).
 
 ## 0.10.3 (2021-13-10)
 * Modification of the Timeout text in the logs when sending an order (#4)
